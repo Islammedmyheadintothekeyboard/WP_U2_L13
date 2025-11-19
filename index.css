@@ -11,6 +11,15 @@
     background-size: cover;
 }
 
+.cardRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    width: 100vw;
+    margin-bottom: 20px;
+}
+
 #cat{
     background-image: url("resources/common/cat.png");
 }
@@ -49,13 +58,4 @@
 
 #smoke{
     background-image: url("resources/common/smoke.jpg");
-}
-
-.cardRow {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-    width: 100vw;
-    margin-bottom: 20px;
 }
