@@ -1,0 +1,16 @@
+.card {
+    background-color: white;
+    border: 5px solid black;
+    width: 150px;
+    height: 200px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
