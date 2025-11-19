@@ -8,6 +8,11 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    background-size: fit;
+}
+
+#cat{
+    background-image: url("resources/common/cat.png");
 }
 
 .cardRow {
