@@ -27,7 +27,29 @@
     background-image: url("resources/common/pumpkins_shape.png");
 }
 
+#ghostface{
+    background-image: url("resources/common/ghostface.jpg");
+}
 
+#tree{ 
+    background-image: url("resources/common/tree.jpg");
+}
+
+#pennywise{
+    background-image: url("resources/common/pennywise.jpg");
+}
+
+#joker{
+    background-image: url("resources/common/lookinggoodjoker.jpg");
+}
+
+#reaper{
+    background-image: url("resources/common/pumpreap.jpg");
+}
+
+#smoke{
+    background-image: url("resources/common/smoke.jpg");
+}
 
 .cardRow {
     display: flex;
