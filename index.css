@@ -15,6 +15,20 @@
     background-image: url("resources/common/cat.png");
 }
 
+#house{
+    background-image: url("resources/common/house.png");
+}
+
+#ghost{
+    background-image: url("resources/common/ghosting.png");
+}
+
+#pumpkins{
+    background-image: url("resources/common/pumpkins_shape.png");
+}
+
+
+
 .cardRow {
     display: flex;
     flex-direction: row;
