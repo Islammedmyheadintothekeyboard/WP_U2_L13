@@ -4,6 +4,7 @@ sessionStorage.setItem('player2Score', 0);
 sessionStorage.setItem('done', false);
 
 function imageAssign () {
+    lastcardclick = []
     const ids = ['cat', 'joker', 'ghostface', 'smoke', 'ghost', 'house', 'pumpkins', 'pennywise', 'reaper', 'tree'];
     const cards = Array.from(document.getElementsByClassName("card"));
     
@@ -25,5 +26,15 @@ function flipCard (card, id) {
     }
     else {
         card.id=id;
+        lastcardclick.push(card);
+        console.log(lastcardclick);
+        if (lastcardclick.length == 2){
+            if (lastcardclick[0].id == lastcardclick[1].id){
+                console.log("correct");
+            }
+            else{
+               lastcardclick.length = 0
+            }
+        }
     }
 }
