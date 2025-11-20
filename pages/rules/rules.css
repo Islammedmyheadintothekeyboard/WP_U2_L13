@@ -7,12 +7,18 @@ h1 {
     font-size: 50px;
 }
 .matches {
-    height: 100%;
-    width: 10%;
-    border: 1px, solid black;
+    border: 5px solid black;
+    width: 125px;
+    height: 100px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-size: cover;
 } 
 #container {
-    width: 50%;
+    width: 80%;
     height: 100px;
     display: flex;
     flex-direction: row;
