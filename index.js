@@ -31,9 +31,10 @@ function flipCard (card, id) {
         if (lastcardclick.length == 2){
             if (lastcardclick[0].id == lastcardclick[1].id){
                 console.log("correct");
+                lastcardclick.length = 0;
             }
             else{
-               lastcardclick.length = 0
+               lastcardclick.length = 0;
             }
         }
     }
