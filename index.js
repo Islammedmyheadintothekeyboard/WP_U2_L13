@@ -10,8 +10,8 @@ function imageAssign () {
     for (let idInd=0; idInd<ids.length; idInd++) {
         for (let i=0; i<2; i++) {
             let randCardInd = Math.floor(Math.random() * cards.length);
-            card.id = 'whiteBack';
             const card = cards.splice(randCardInd, 1)[0];
+            card.id = 'whiteBack';
             card.onclick = function() { flipCard(card, ids[idInd]); };
         }
     }
