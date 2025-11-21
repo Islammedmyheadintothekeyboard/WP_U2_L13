@@ -1,10 +1,10 @@
-sessionStorage.setItem('turn', 0);
+sessionStorage.setItem('turn', 1);
 sessionStorage.setItem('player1Score', 0);
 sessionStorage.setItem('player2Score', 0);
 sessionStorage.setItem('done', false);
-
+lastcardclick = []
+id = null
 function imageAssign () {
-    lastcardclick = []
     const ids = ['cat', 'joker', 'ghostface', 'smoke', 'ghost', 'house', 'pumpkins', 'pennywise', 'reaper', 'tree'];
     const cards = Array.from(document.getElementsByClassName("card"));
     
@@ -22,11 +22,6 @@ function imageAssign () {
 
 
 function flipCard (card, id) {
-        if (card.id !== 'whiteBack') {
-            card.id = 'whiteBack';
-        }
-
-        else {
             card.id = id;
             lastcardclick.push(card);
             console.log(lastcardclick);
@@ -41,19 +36,24 @@ function flipCard (card, id) {
                 }
 
                 else {
-                    lastcardclick.length = 0;
+                    console.log(lastcardclick);
+                    nextTurn();
+                    setTimeout(backroundchange,500);
                 }
 
-                console.log(lastcardclick);
-                nextTurn();
             }
         }
-}
 
+function backroundchange(card1,card2,id) {
+    console.log(id)
+    lastcardclick[0].id='whiteBack'
+    lastcardclick[1].id='whiteBack'
+    lastcardclick.length = 0;
+}
 function nextTurn () {
     sessionStorage.setItem('turn', parseInt(sessionStorage.getItem('turn')) + 1);
     const playerTurnDiv = document.getElementsByClassName('playerTurn')[0];
     const currTurn = sessionStorage.getItem('turn') % 2;
-    playerTurnDiv.textContent = `Player ${currTurn}'s Turn`;
+    playerTurnDiv.textContent = `Player ${currTurn + 1}'s Turn`;
 }
 
