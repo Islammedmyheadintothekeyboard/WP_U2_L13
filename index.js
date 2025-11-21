@@ -3,6 +3,7 @@ sessionStorage.setItem('player1Score', 0);
 sessionStorage.setItem('player2Score', 0);
 sessionStorage.setItem('done', false);
 lastcardclick = []
+cardcheckcount = 0
 id = null
 function imageAssign () {
     const ids = ['cat', 'joker', 'ghostface', 'smoke', 'ghost', 'house', 'pumpkins', 'pennywise', 'reaper', 'tree'];
@@ -33,6 +34,10 @@ function flipCard (card, id) {
                     lastcardclick[0].onclick = null;
                     lastcardclick[1].onclick = null;
                     lastcardclick.length = 0;
+                    cardcheckcount++
+                    if (cardcheckcount == 10){
+                        endgame()
+                    }
                 }
 
                 else {
@@ -57,3 +62,7 @@ function nextTurn () {
     playerTurnDiv.textContent = `Player ${currTurn + 1}'s Turn`;
 }
 
+function endgame(){
+console.log("ended")
+
+}
