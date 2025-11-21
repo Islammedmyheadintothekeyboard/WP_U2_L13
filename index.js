@@ -22,7 +22,6 @@ function imageAssign () {
 
 
 function flipCard (card, id) {
-    const currTurn = sessionStorage.getItem('turn') % 2;
         if (card.id !== 'whiteBack') {
             card.id = 'whiteBack';
         }
@@ -32,20 +31,23 @@ function flipCard (card, id) {
             lastcardclick.push(card);
             console.log(lastcardclick);
 
-            if (lastcardclick.length == 2){
-                if (lastcardclick[0].id == lastcardclick[1].id){
+            if (lastcardclick.length === 2){
+
+                if (lastcardclick[0].id === lastcardclick[1].id){
                     console.log("correct");
                     lastcardclick[0].onclick = null;
                     lastcardclick[1].onclick = null;
                     lastcardclick.length = 0;
                 }
+
                 else {
                     lastcardclick.length = 0;
                 }
+
+                console.log(lastcardclick);
+                nextTurn();
             }
         }
-
-    turn++;
 }
 
 function nextTurn () {
@@ -54,3 +56,4 @@ function nextTurn () {
     const currTurn = sessionStorage.getItem('turn') % 2;
     playerTurnDiv.textContent = `Player ${currTurn}'s Turn`;
 }
+
