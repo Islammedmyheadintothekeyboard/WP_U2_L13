@@ -1,4 +1,4 @@
-sessionStorage.setItem('turn', 1);
+sessionStorage.setItem('turn', 0);
 sessionStorage.setItem('player1Score', 0);
 sessionStorage.setItem('player2Score', 0);
 sessionStorage.setItem('done', false);
@@ -16,26 +16,41 @@ function imageAssign () {
             card.onclick = function() { flipCard(card, ids[idInd]); };
         }
     }
+    nextTurn();
 }
 
 
 
 function flipCard (card, id) {
-    if (card.id !== 'whiteBack') {
-        card.id='whiteBack';
-    }
-    else {
-        card.id=id;
-        lastcardclick.push(card);
-        console.log(lastcardclick);
-        if (lastcardclick.length == 2){
-            if (lastcardclick[0].id == lastcardclick[1].id){
-                console.log("correct");
-                lastcardclick.length = 0;
-            }
-            else{
-               lastcardclick.length = 0;
+    const currTurn = sessionStorage.getItem('turn') % 2;
+        if (card.id !== 'whiteBack') {
+            card.id = 'whiteBack';
+        }
+
+        else {
+            card.id = id;
+            lastcardclick.push(card);
+            console.log(lastcardclick);
+
+            if (lastcardclick.length == 2){
+                if (lastcardclick[0].id == lastcardclick[1].id){
+                    console.log("correct");
+                    lastcardclick[0].onclick = null;
+                    lastcardclick[1].onclick = null;
+                    lastcardclick.length = 0;
+                }
+                else {
+                    lastcardclick.length = 0;
+                }
             }
         }
-    }
+
+    turn++;
+}
+
+function nextTurn () {
+    sessionStorage.setItem('turn', parseInt(sessionStorage.getItem('turn')) + 1);
+    const playerTurnDiv = document.getElementsByClassName('playerTurn')[0];
+    const currTurn = sessionStorage.getItem('turn') % 2;
+    playerTurnDiv.textContent = `Player ${currTurn}'s Turn`;
 }
