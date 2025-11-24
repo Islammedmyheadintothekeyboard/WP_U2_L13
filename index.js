@@ -35,6 +35,12 @@ function flipCard (card, id) {
             lastcardclick[1].onclick = null;
             lastcardclick.length = 0;
             cardcheckcount++
+            if (sessionStorage.getItem('turn') % 2 == 0) {
+                sessionStorage.setItem('player1Score', parseInt(sessionStorage.getItem('player1Score')) + 1)
+            }
+            else {
+                sessionStorage.setItem('player2Score', parseInt(sessionStorage.getItem('player2Score')) + 1)
+            }
             if (cardcheckcount == 10){
                 endgame();
             }
