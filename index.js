@@ -2,9 +2,9 @@ sessionStorage.setItem('turn', 1);
 sessionStorage.setItem('player1Score', 0);
 sessionStorage.setItem('player2Score', 0);
 sessionStorage.setItem('done', false);
-lastcardclick = []
-cardcheckcount = 0
-id = null
+lastcardclick = [];
+cardcheckcount = 0;
+id = null;
 function imageAssign () {
     const ids = ['cat', 'joker', 'ghostface', 'smoke', 'ghost', 'house', 'pumpkins', 'pennywise', 'reaper', 'tree'];
     const cards = Array.from(document.getElementsByClassName("card"));
@@ -23,36 +23,36 @@ function imageAssign () {
 
 
 function flipCard (card, id) {
-            card.id = id;
-            lastcardclick.push(card);
-            console.log(lastcardclick);
+    card.id = id;
+    lastcardclick.push(card);
+    console.log(lastcardclick);
 
-            if (lastcardclick.length === 2){
+    if (lastcardclick.length === 2){
 
-                if (lastcardclick[0].id === lastcardclick[1].id){
-                    console.log("correct");
-                    lastcardclick[0].onclick = null;
-                    lastcardclick[1].onclick = null;
-                    lastcardclick.length = 0;
-                    cardcheckcount++
-                    if (cardcheckcount == 10){
-                        endgame()
-                    }
-                }
-
-                else {
-                    console.log(lastcardclick);
-                    nextTurn();
-                    setTimeout(backroundchange,500);
-                }
-
+        if (lastcardclick[0].id === lastcardclick[1].id && lastcardclick[0] !== lastcardclick[1]){
+            console.log("correct");
+            lastcardclick[0].onclick = null;
+            lastcardclick[1].onclick = null;
+            lastcardclick.length = 0;
+            cardcheckcount++
+            if (cardcheckcount == 10){
+                endgame();
             }
         }
 
-function backroundchange(card1,card2,id) {
-    console.log(id)
-    lastcardclick[0].id='whiteBack'
-    lastcardclick[1].id='whiteBack'
+        else {
+            console.log(lastcardclick);
+            nextTurn();
+            setTimeout(backroundchange,500);
+        }
+
+    }
+}
+
+function backroundchange(id) {
+    console.log(id);
+    lastcardclick[0].id='whiteBack';
+    lastcardclick[1].id='whiteBack';
     lastcardclick.length = 0;
 }
 function nextTurn () {
@@ -63,6 +63,5 @@ function nextTurn () {
 }
 
 function endgame(){
-console.log("ended")
-
+    console.log("ended");
 }
