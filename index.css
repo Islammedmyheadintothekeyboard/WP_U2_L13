@@ -66,3 +66,13 @@
 #smoke{
     background-image: url("resources/common/smoke.jpg");
 }
+
+#scores {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+#player1Score, #player2Score {
+    text-align: center;
+}
