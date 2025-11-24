@@ -20,6 +20,13 @@
     margin-bottom: 20px;
 }
 
+.playerTurn {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px;
+    text-align: center;
+}
+
 #cat{
     background-image: url("resources/common/cat.png");
 }
