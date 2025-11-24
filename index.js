@@ -37,22 +37,18 @@ function flipCard (card, id) {
             cardcheckcount++
             if (sessionStorage.getItem('turn') % 2 == 0) {
                 sessionStorage.setItem('player1Score', parseInt(sessionStorage.getItem('player1Score')) + 1)
+                const p1num = sessionStorage.getItem('player1Score');
                 const p1score = document.getElementById("player1Score");
-                let p1text = p1score.textContent;
-                let p1change = p1text[-1];
-                const p1num = Number(p1change);
-                p1num++
+
                 p1score.textContent = `Player 1 score:${p1num}`;
 
 
             }
             else {
                 sessionStorage.setItem('player2Score', parseInt(sessionStorage.getItem('player2Score')) + 1);
+                const p2num = sessionStorage.getItem('player2Score');
                 const p2score = document.getElementById("player2Score");
-                let p2text = p2score.textContent;
-                let p2change = p2text[-1];
-                const p2num = Number(p2change);
-                p2num++
+
                 p2score.textContent = `Player 2 score:${p2num}`;
             }
             if (cardcheckcount == 10){
