@@ -31,6 +31,16 @@
   left: 47vw;
   color: white;
 }
+#wins {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  width: 5vw;
+  position: fixed;
+  top: 5vh;
+  left: 5vw;
+}
 .playerTurn {
     font-size: 24px;
     font-weight: bold;

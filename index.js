@@ -2,7 +2,8 @@ sessionStorage.setItem('turn', 1);
 sessionStorage.setItem('player1Score', 0);
 sessionStorage.setItem('player2Score', 0);
 sessionStorage.setItem('done', false);
-
+sessionStorage.setItem('p1win',0);
+sessionStorage.setItem('p2win',0);
 lastcardclick = [];
 cardcheckcount = 0;
 
@@ -84,5 +85,23 @@ function endgame () {
 
     else {
         playerTurnDiv.textContent = `Congratulations player ${(sessionStorage.getItem('player1Score') > sessionStorage.getItem('player2Score')) ? 1 : 2 }, you won!`;
+        if ((Number(sessionStorage.getItem('player1Score')) > Number(sessionStorage.getItem('player2Score')))) {
+            sessionStorage.setItem('p1win', parseInt(sessionStorage.getItem('p1win')) + 1);
+            const p1nums = sessionStorage.getItem('p1win');
+            const p1win = document.getElementById("p1win");
+
+            p1win.textContent = `Player 1 wins:${p1nums}`;
+        }       
+        else {
+            sessionStorage.setItem('p2win', parseInt(sessionStorage.getItem('p2win')) + 1);
+            const p2nums = sessionStorage.getItem('p2win');
+            const p2win = document.getElementById("p2win");
+
+            p1win.textContent = `Player 2 wins:${p2nums}`;
+        }
     }
+}    
+function restart(){
+  location.reload();
+  sessionStorage.setItem('turn', 1);
 }
