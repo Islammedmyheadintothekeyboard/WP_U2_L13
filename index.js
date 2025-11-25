@@ -12,6 +12,9 @@ lastcardclick = [];
 cardcheckcount = 0;
 
 function imageAssign () {
+    document.getElementById('p2win').textContent = `Player 2 wins: ${sessionStorage.getItem('p2win')}`;
+    document.getElementById('p1win').textContent = `Player 1 wins: ${sessionStorage.getItem('p1win')}`;
+    
     const ids = ['cat', 'joker', 'ghostface', 'smoke', 'ghost', 'house', 'pumpkins', 'pennywise', 'reaper', 'tree'];
     const cards = Array.from(document.getElementsByClassName("card"));
     
