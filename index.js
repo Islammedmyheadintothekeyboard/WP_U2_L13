@@ -2,8 +2,12 @@ sessionStorage.setItem('turn', 1);
 sessionStorage.setItem('player1Score', 0);
 sessionStorage.setItem('player2Score', 0);
 sessionStorage.setItem('done', false);
-sessionStorage.setItem('p1win',0);
-sessionStorage.setItem('p2win',0);
+
+if (sessionStorage.getItem('p1win') === null) {
+    sessionStorage.setItem('p1win', 0);
+    sessionStorage.setItem('p2win', 0);
+}
+
 lastcardclick = [];
 cardcheckcount = 0;
 
@@ -41,8 +45,6 @@ function flipCard (card, id) {
                 const p1score = document.getElementById("player1Score");
 
                 p1score.textContent = `Player 1 score:${p1num}`;
-
-
             }
             else {
                 sessionStorage.setItem('player2Score', parseInt(sessionStorage.getItem('player2Score')) + 1);
@@ -60,7 +62,6 @@ function flipCard (card, id) {
             nextTurn();
             setTimeout(backroundchange,500);
         }
-
     }
 }
 
@@ -69,6 +70,7 @@ function backroundchange () {
     lastcardclick[1].id='whiteBack';
     lastcardclick.length = 0;
 }
+
 function nextTurn () {
     sessionStorage.setItem('turn', parseInt(sessionStorage.getItem('turn')) + 1);
     const playerTurnDiv = document.getElementsByClassName('playerTurn')[0];
@@ -84,20 +86,15 @@ function endgame () {
     }
 
     else {
-        playerTurnDiv.textContent = `Congratulations player ${(sessionStorage.getItem('player1Score') > sessionStorage.getItem('player2Score')) ? 1 : 2 }, you won!`;
         if ((Number(sessionStorage.getItem('player1Score')) > Number(sessionStorage.getItem('player2Score')))) {
+            playerTurnDiv.textContent = `Congratulations player 1, you won!`;
             sessionStorage.setItem('p1win', parseInt(sessionStorage.getItem('p1win')) + 1);
-            const p1nums = sessionStorage.getItem('p1win');
-            const p1win = document.getElementById("p1win");
-
-            p1win.textContent = `Player 1 wins:${p1nums}`;
-        }       
+            document.getElementById('p1win').textContent = `Player 1 wins: ${sessionStorage.getItem('p1win')}`;
+        }
         else {
+            playerTurnDiv.textContent = `Congratulations player 2, you won!`;
             sessionStorage.setItem('p2win', parseInt(sessionStorage.getItem('p2win')) + 1);
-            const p2nums = sessionStorage.getItem('p2win');
-            const p2win = document.getElementById("p2win");
-
-            p1win.textContent = `Player 2 wins:${p2nums}`;
+            document.getElementById('p2win').textContent = `Player 2 wins: ${sessionStorage.getItem('p2win')}`;
         }
     }
 }    

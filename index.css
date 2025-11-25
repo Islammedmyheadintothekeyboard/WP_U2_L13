@@ -20,27 +20,18 @@
     margin-bottom: 20px;
 }
 #restart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  height: 5vh;
-  width: 5vw;
-  position: fixed;
-  top: 15vh;
-  left: 47vw;
-  color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    height: 5vh;
+    width: 5vw;
+    position: fixed;
+    top: 15vh;
+    left: 47vw;
+    color: white;
 }
-#wins {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 5vh;
-  width: 5vw;
-  position: fixed;
-  top: 5vh;
-  left: 5vw;
-}
+
 .playerTurn {
     font-size: 24px;
     font-weight: bold;
@@ -88,12 +79,11 @@
     background-image: url("resources/common/smoke.jpg");
 }
 
-#scores {
+#scores, #wins {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 10px;
 }
 
-#player1Score, #player2Score {
+#player1Score, #player2Score, #p1win, #p2win {
     text-align: center;
 }
