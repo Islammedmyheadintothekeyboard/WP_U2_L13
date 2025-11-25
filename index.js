@@ -2,9 +2,10 @@ sessionStorage.setItem('turn', 1);
 sessionStorage.setItem('player1Score', 0);
 sessionStorage.setItem('player2Score', 0);
 sessionStorage.setItem('done', false);
+
 lastcardclick = [];
 cardcheckcount = 0;
-id = null;
+
 function imageAssign () {
     const ids = ['cat', 'joker', 'ghostface', 'smoke', 'ghost', 'house', 'pumpkins', 'pennywise', 'reaper', 'tree'];
     const cards = Array.from(document.getElementsByClassName("card"));
@@ -25,12 +26,10 @@ function imageAssign () {
 function flipCard (card, id) {
     card.id = id;
     lastcardclick.push(card);
-    console.log(lastcardclick);
 
     if (lastcardclick.length === 2){
 
         if (lastcardclick[0].id === lastcardclick[1].id && lastcardclick[0] !== lastcardclick[1]){
-            console.log("correct");
             lastcardclick[0].onclick = null;
             lastcardclick[1].onclick = null;
             lastcardclick.length = 0;
@@ -57,7 +56,6 @@ function flipCard (card, id) {
         }
 
         else {
-            console.log(lastcardclick);
             nextTurn();
             setTimeout(backroundchange,500);
         }
@@ -65,8 +63,7 @@ function flipCard (card, id) {
     }
 }
 
-function backroundchange(id) {
-    console.log(id);
+function backroundchange () {
     lastcardclick[0].id='whiteBack';
     lastcardclick[1].id='whiteBack';
     lastcardclick.length = 0;
@@ -78,6 +75,14 @@ function nextTurn () {
     playerTurnDiv.textContent = `Player ${currTurn + 1}'s Turn`;
 }
 
-function endgame(){
-    console.log("ended");
+function endgame () {
+    const playerTurnDiv = document.getElementsByClassName('playerTurn')[0];
+
+    if (sessionStorage.getItem('player1Score') === sessionStorage.getItem('player2Score')){
+        playerTurnDiv.textContent = `It's a tie! Neither of you guys win since you had the same score.`;
+    }
+
+    else {
+        playerTurnDiv.textContent = `Congratulations player ${(sessionStorage.getItem('player1Score') > sessionStorage.getItem('player2Score')) ? 1 : 2 }, you won!`;
+    }
 }
